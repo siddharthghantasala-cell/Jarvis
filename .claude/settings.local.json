@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(C:/Users/sidds/PycharmProjects/Jarvis/.venv/Scripts/python.exe:*)",
+      "WebFetch(domain:picovoice.ai)",
+      "WebSearch",
+      "Bash(grep:*)",
+      "Bash(cd:*)",
+      "Bash(find:*)"
+    ]
+  }
+}

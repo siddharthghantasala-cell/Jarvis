@@ -1,0 +1,196 @@
+[
+  {
+    "instruction": "Jarvis open notepad",
+    "actions": [
+      "pyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"notepad\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")",
+      "time.sleep(1)\npyautogui.hotkey(\"win\")\ntime.sleep(1)\npyautogui.write(\"notepad\", interval=0.05)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(1)"
+    ],
+    "timestamp": "2026-03-14T22:52:38.347738"
+  },
+  {
+    "instruction": "Look up cute cat videos on line",
+    "actions": [
+      "pyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"chrome\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(2)\npyautogui.hotkey(\"ctrl\", \"l\")\ntime.sleep(0.5)\npyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)\npyautogui.press(\"enter\")\ntime.sleep(3)"
+    ],
+    "timestamp": "2026-03-14T23:16:33.910877",
+    "plan": "Open Chrome via the Windows Start menu, then navigate directly to a YouTube search results page for cute cat videos.",
+    "subtasks": [
+      {
+        "label": "open Chrome",
+        "actions": [
+          "pyautogui.hotkey(\"win\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"chrome\", interval=0.02)",
+          "time.sleep(0.5)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(2)"
+        ]
+      },
+      {
+        "label": "navigate to YouTube search results",
+        "actions": [
+          "pyautogui.hotkey(\"ctrl\", \"l\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(3)"
+        ]
+      }
+    ]
+  },
+  {
+    "instruction": "open Chrome",
+    "actions": [
+      "pyautogui.hotkey(\"win\")",
+      "time.sleep(0.5)",
+      "pyautogui.write(\"chrome\", interval=0.02)",
+      "time.sleep(0.5)",
+      "pyautogui.press(\"enter\")",
+      "time.sleep(2)"
+    ],
+    "plan": "Subtask: open Chrome",
+    "timestamp": "2026-03-14T23:16:33.912572"
+  },
+  {
+    "instruction": "navigate to YouTube search results",
+    "actions": [
+      "pyautogui.hotkey(\"ctrl\", \"l\")",
+      "time.sleep(0.5)",
+      "pyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)",
+      "pyautogui.press(\"enter\")",
+      "time.sleep(3)"
+    ],
+    "plan": "Subtask: navigate to YouTube search results",
+    "timestamp": "2026-03-14T23:16:33.912572"
+  },
+  {
+    "instruction": "Open command prompt",
+    "actions": [
+      "pyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"cmd\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(2)"
+    ],
+    "timestamp": "2026-03-14T23:34:07.609857",
+    "plan": "Open the Start menu, search for Command Prompt, and launch it by pressing Enter.",
+    "subtasks": [
+      {
+        "label": "open Start menu",
+        "actions": [
+          "pyautogui.hotkey(\"win\")",
+          "time.sleep(0.5)"
+        ]
+      },
+      {
+        "label": "search for cmd",
+        "actions": [
+          "pyautogui.write(\"cmd\", interval=0.02)",
+          "time.sleep(0.5)"
+        ]
+      },
+      {
+        "label": "launch Command Prompt",
+        "actions": [
+          "pyautogui.press(\"enter\")",
+          "time.sleep(2)"
+        ]
+      }
+    ]
+  },
+  {
+    "instruction": "open Start menu",
+    "actions": [
+      "pyautogui.hotkey(\"win\")",
+      "time.sleep(0.5)"
+    ],
+    "plan": "Subtask: open Start menu",
+    "timestamp": "2026-03-14T23:34:07.613782"
+  },
+  {
+    "instruction": "search for cmd",
+    "actions": [
+      "pyautogui.write(\"cmd\", interval=0.02)",
+      "time.sleep(0.5)"
+    ],
+    "plan": "Subtask: search for cmd",
+    "timestamp": "2026-03-14T23:34:07.613782"
+  },
+  {
+    "instruction": "launch Command Prompt",
+    "actions": [
+      "pyautogui.press(\"enter\")",
+      "time.sleep(2)"
+    ],
+    "plan": "Subtask: launch Command Prompt",
+    "timestamp": "2026-03-14T23:34:07.613782"
+  },
+  {
+    "instruction": "Can you show me some cute cat videos online",
+    "actions": [
+      "pyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"chrome\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(2)\npyautogui.hotkey(\"ctrl\", \"l\")\ntime.sleep(0.5)\npyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)\npyautogui.press(\"enter\")\ntime.sleep(3)"
+    ],
+    "timestamp": "2026-03-14T23:36:13.371982",
+    "plan": "Open Chrome via the Windows start menu and navigate directly to a YouTube search results page for cute cat videos.",
+    "subtasks": [
+      {
+        "label": "open Chrome",
+        "actions": [
+          "pyautogui.hotkey(\"win\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"chrome\", interval=0.02)",
+          "time.sleep(0.5)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(2)"
+        ]
+      },
+      {
+        "label": "navigate to YouTube search results",
+        "actions": [
+          "pyautogui.hotkey(\"ctrl\", \"l\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(3)"
+        ]
+      }
+    ]
+  },
+  {
+    "instruction": "You open my notepad and open a new note and write down the letters a b and C in their",
+    "actions": [
+      "pyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"notepad\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(1.5)\npyautogui.write(\"a b C\", interval=0.05)",
+      "# Create a new note\npyautogui.hotkey(\"ctrl\", \"n\")\ntime.sleep(1)\npyautogui.write(\"a b C\", interval=0.05)"
+    ],
+    "timestamp": "2026-03-15T18:00:54.269030",
+    "plan": "Open Notepad, write the letters in the existing window, then create a new note and write the letters again.",
+    "subtasks": [
+      {
+        "label": "open Notepad",
+        "actions": [
+          "pyautogui.hotkey(\"win\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"notepad\", interval=0.02)",
+          "time.sleep(0.5)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(1.5)"
+        ]
+      },
+      {
+        "label": "write letters in existing note",
+        "actions": [
+          "pyautogui.write(\"a b C\", interval=0.05)"
+        ]
+      },
+      {
+        "label": "create new note",
+        "actions": [
+          "pyautogui.hotkey(\"ctrl\", \"n\")",
+          "time.sleep(1)"
+        ]
+      },
+      {
+        "label": "write letters in new note",
+        "actions": [
+          "pyautogui.write(\"a b C\", interval=0.05)"
+        ]
+      }
+    ]
+  }
+]

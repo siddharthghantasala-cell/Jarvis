@@ -1,0 +1,97 @@
+.siri-container {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    /* Keep it circular */
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle glass base */
+    backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 0 20px rgba(255, 255, 255, 0.2),
+        0 0 15px rgba(0, 0, 0, 0.1);
+    /* Ensure it stays centered */
+    margin: auto;
+}
+
+.siri-blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    /* Reduced size to fit frame */
+    height: 85%;
+    /* Reduced size to fit frame */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    /* Darker Idle State: Midnight Blue, Dark Slate */
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #172554);
+    opacity: 0.9;
+    filter: blur(8px);
+    animation: rotate 4s linear infinite, morph 3s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+}
+
+.siri-blob:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    /* Darker variant */
+    background: linear-gradient(135deg, #1e1b4b, #312e81, #4338ca);
+    animation-direction: reverse;
+    animation-duration: 5s;
+    opacity: 0.8;
+}
+
+.siri-blob:nth-child(3) {
+    width: 70%;
+    height: 70%;
+    /* Deep Teal/Cyan accents, but darker */
+    background: linear-gradient(135deg, #0f172a, #155e75, #0e7490);
+    animation-duration: 3.5s;
+    opacity: 0.7;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(-50%, -50%) scale(1.05);
+        /* Slightly reduced scale variance to prevent clipping */
+    }
+}
+
+/* Listening State - More active and Brighter */
+.siri-container.listening .siri-blob {
+    animation-duration: 1s;
+    /* Very fast */
+    filter: blur(5px) brightness(1.8);
+    /* Significantly brighter */
+    background: linear-gradient(135deg, #3b82f6, #06b6d4, #22d3ee);
+    /* Switch to brighter cyan/blue */
+}
+
+.siri-container.listening .siri-blob:nth-child(2) {
+    background: linear-gradient(135deg, #60a5fa, #34d399, #a78bfa);
+}
+
+.siri-container.listening .siri-blob:nth-child(3) {
+    background: linear-gradient(135deg, #f472b6, #fbbf24, #22d3ee);
+}
