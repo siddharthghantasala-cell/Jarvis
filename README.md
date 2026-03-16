@@ -170,6 +170,11 @@ Currently `ClaudeGroundingModel` is the only implementation. To switch to anothe
 - Orca TTS cannot synthesize special characters (e.g., `*`, `**`) — screen narrations should avoid markdown formatting
 - The semantic search model (~90MB) loads on first use, adding a few seconds to the first task
 
+## Future fixes and implementations
+- Hoping to fix everything in the known limitations
+- Implement lighter local screen reader models for better screen reading
+- Optimize learning and instruction retrieval using better semantic searches and structured knowledge bases
+
 ## License
 
 MIT
