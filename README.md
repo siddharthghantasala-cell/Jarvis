@@ -1,5 +1,7 @@
 # Jarvis — Voice-Controlled Desktop Agent
 
+https://github.com/siddharthghantasala-cell/Jarvis
+
 A desktop assistant you talk to. Say "Jarvis", give a command, and it automates your computer using keyboard-only control — no mouse, no clicking. Designed with accessibility in mind, Jarvis narrates what's on screen via text-to-speech so visually impaired users can follow along.
 
 Built with Electron + React for the UI, Picovoice for wake word / speech-to-text / TTS, and Claude for the automation brain.

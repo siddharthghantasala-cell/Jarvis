@@ -31,7 +31,7 @@
         "actions": [
           "pyautogui.hotkey(\"ctrl\", \"l\")",
           "time.sleep(0.5)",
-          "pyautogui.write(\"https://www.youtube.com/results?search_query=cute+cat+videos\", interval=0.02)",
+          "pyautogui.write(\"https://www.youtube.com/results?search_query=\", interval=0.02)",
           "pyautogui.press(\"enter\")",
           "time.sleep(3)"
         ]
@@ -192,5 +192,74 @@
         ]
       }
     ]
+  },
+  {
+    "instruction": "Can you create a notepad and a new grocery list in that notepad and add put at tomatoes potatoes and pumpkins to it",
+    "actions": [
+      "# Open Notepad\npyautogui.hotkey(\"win\")\ntime.sleep(0.5)\npyautogui.write(\"notepad\", interval=0.02)\ntime.sleep(0.5)\npyautogui.press(\"enter\")\ntime.sleep(1.5)\n\n# Type the grocery list\npyautogui.write(\"Grocery List\", interval=0.05)\npyautogui.press(\"enter\")\npyautogui.write(\"- Tomatoes\", interval=0.05)\npyautogui.press(\"enter\")\npyautogui.write(\"- Potatoes\", interval=0.05)\npyautogui.press(\"enter\")\npyautogui.write(\"- Pumpkins\", interval=0.05)\n\n# Save the file\npyautogui.hotkey(\"ctrl\", \"s\")\ntime.sleep(1)\npyautogui.write(\"Grocery List\", interval=0.05)\npyautogui.press(\"enter\")\ntime.sleep(1)"
+    ],
+    "timestamp": "2026-03-16T00:32:37.479255",
+    "plan": "Open Notepad, type a grocery list with tomatoes, potatoes, and pumpkins, then save the file with the name 'Grocery List'.",
+    "subtasks": [
+      {
+        "label": "Open Notepad",
+        "actions": [
+          "pyautogui.hotkey(\"win\")",
+          "time.sleep(0.5)",
+          "pyautogui.write(\"notepad\", interval=0.02)",
+          "time.sleep(0.5)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(1.5)"
+        ]
+      },
+      {
+        "label": "Type grocery list",
+        "actions": [
+          "pyautogui.write(\"Grocery List\", interval=0.05)",
+          "pyautogui.press(\"enter\")",
+          "pyautogui.write(\"- Tomatoes\", interval=0.05)",
+          "pyautogui.press(\"enter\")",
+          "pyautogui.write(\"- Potatoes\", interval=0.05)",
+          "pyautogui.press(\"enter\")",
+          "pyautogui.write(\"- Pumpkins\", interval=0.05)"
+        ]
+      },
+      {
+        "label": "Save the file",
+        "actions": [
+          "pyautogui.hotkey(\"ctrl\", \"s\")",
+          "time.sleep(1)",
+          "pyautogui.write(\"Grocery List\", interval=0.05)",
+          "pyautogui.press(\"enter\")",
+          "time.sleep(1)"
+        ]
+      }
+    ]
+  },
+  {
+    "instruction": "Type grocery list",
+    "actions": [
+      "pyautogui.write(\"Grocery List\", interval=0.05)",
+      "pyautogui.press(\"enter\")",
+      "pyautogui.write(\"- Tomatoes\", interval=0.05)",
+      "pyautogui.press(\"enter\")",
+      "pyautogui.write(\"- Potatoes\", interval=0.05)",
+      "pyautogui.press(\"enter\")",
+      "pyautogui.write(\"- Pumpkins\", interval=0.05)"
+    ],
+    "plan": "Subtask: Type grocery list",
+    "timestamp": "2026-03-16T00:32:37.955815"
+  },
+  {
+    "instruction": "Save the file",
+    "actions": [
+      "pyautogui.hotkey(\"ctrl\", \"s\")",
+      "time.sleep(1)",
+      "pyautogui.write(\"Grocery List\", interval=0.05)",
+      "pyautogui.press(\"enter\")",
+      "time.sleep(1)"
+    ],
+    "plan": "Subtask: Save the file",
+    "timestamp": "2026-03-16T00:32:38.175625"
   }
 ]
