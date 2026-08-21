@@ -3,19 +3,7 @@ import { usePorcupine } from '@picovoice/porcupine-react'
 import SiriAnimation from './components/SiriAnimation'
 import './App.css'
 
-// Extend Window interface to include ipcRenderer
-declare global {
-  interface Window {
-    ipcRenderer: {
-      on: (...args: any[]) => void
-      off: (...args: any[]) => void
-      send: (...args: any[]) => void
-      invoke: (...args: any[]) => Promise<any>
-      startRecording: () => Promise<{ success: boolean; text?: string; error?: string }>
-      stopAgent: () => Promise<{ success: boolean; error?: string }>
-    }
-  }
-}
+// `Window.ipcRenderer` is declared globally in electron/electron-env.d.ts
 
 function App() {
   const [isListening, setIsListening] = useState(false)
@@ -73,11 +61,11 @@ function App() {
   // Track agent lifecycle
   useEffect(() => {
     const onStarted = () => {
-      console.log('Agent S3 started')
+      console.log('Jarvis agent started')
       setIsAgentRunning(true)
     }
     const onStopped = () => {
-      console.log('Agent S3 stopped')
+      console.log('Jarvis agent stopped')
       setIsAgentRunning(false)
     }
     window.ipcRenderer.on('agent-started', onStarted)

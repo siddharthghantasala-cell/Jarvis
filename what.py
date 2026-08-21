@@ -158,7 +158,7 @@ def main():
         if test.lower() == 'y':
             pyautogui.click()
             time.sleep(0.5)
-            pyautogui.write("Hello from Agent S!")
+            pyautogui.write("Hello from Jarvis!")
             print("✅ Typed test message!")
     else:
         print(f"\n{'='*60}")

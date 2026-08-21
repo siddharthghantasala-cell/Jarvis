@@ -110,8 +110,8 @@ npm run dev
 │   │   └── components/
 │   │       ├── SiriAnimation.tsx    # Floating icon with blob animation
 │   │       └── SiriAnimation.css    # Idle + listening glow states
-│   └── agent-s2-example/
-│       ├── agent_s3.py              # Automation agent (grounding model + PyAutoGUI)
+│   └── jarvis-agent/
+│       ├── jarvis_agent.py          # Automation agent (grounding model + PyAutoGUI)
 │       └── experience_cache.json    # Learned task sequences
 ├── requirements.txt
 └── .env
@@ -119,7 +119,7 @@ npm run dev
 
 ## The agent
 
-`agent_s3.py` is the brain. It:
+`jarvis_agent.py` is the brain. It's written from scratch — no third-party GUI-agent framework. It:
 
 - Takes screenshots and sends them to the grounding model with a keyboard-only action constraint
 - Narrates what's on screen at each step via `NARRATION:` lines (spoken aloud by Electron via Orca TTS)

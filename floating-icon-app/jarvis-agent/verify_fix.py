@@ -4,10 +4,10 @@ from PIL import Image
 import io
 import pyautogui
 
-# Add current directory to path to import agent_s3
+# Add current directory to path to import jarvis_agent
 sys.path.append(os.getcwd())
 
-from agent_s3 import Executor
+from jarvis_agent import Executor
 
 def test_screenshot_resizing():
     print("Testing Executor.screenshot()...")

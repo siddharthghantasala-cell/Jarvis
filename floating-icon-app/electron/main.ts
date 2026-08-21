@@ -1,5 +1,4 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import * as fs from 'fs'
@@ -13,7 +12,6 @@ import { TTSConfirmation } from './tts-confirmation'
 config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '.env') })
 config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '.env') })
 
-const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 process.env.APP_ROOT = path.join(__dirname, '..')
@@ -121,8 +119,8 @@ ipcMain.handle('start-recording', async () => {
       fs.unlinkSync(outputFile);
     }
 
-    if (result && (result.text || result.transcription)) {
-      const transcribedText = (result.text || result.transcription) as string;
+    if (result && result.text) {
+      const transcribedText = result.text;
       console.log('Transcription:', transcribedText);
 
       // Play confirmation sound
@@ -130,10 +128,10 @@ ipcMain.handle('start-recording', async () => {
         await ttsConfirmation.playConfirmation();
       }
 
-      // Execute agent_s3.py with the transcribed text
-      console.log('Executing Agent S3...');
+      // Execute jarvis_agent.py with the transcribed text
+      console.log('Executing Jarvis agent...');
       const appRoot = process.env.APP_ROOT || path.join(__dirname, '..');
-      const agentScriptPath = path.join(appRoot, 'agent-s2-example', 'agent_s3.py');
+      const agentScriptPath = path.join(appRoot, 'jarvis-agent', 'jarvis_agent.py');
 
       const pythonPath = process.platform === 'win32'
         ? path.join(process.env.APP_ROOT || '', '..', '.venv', 'Scripts', 'python.exe')
@@ -188,7 +186,7 @@ ipcMain.handle('start-recording', async () => {
           agentProcess = null;
           win?.webContents.send('agent-stopped');
           if (code === 0 || code === null) {
-            console.log(code === null ? 'Agent S3 was stopped' : 'Agent S3 completed successfully');
+            console.log(code === null ? 'Jarvis agent was stopped' : 'Jarvis agent completed successfully');
             // Play completion notification
             if (code === 0 && ttsConfirmation) {
               try {
@@ -199,15 +197,15 @@ ipcMain.handle('start-recording', async () => {
             }
             resolve();
           } else {
-            console.error(`Agent S3 exited with code ${code}`);
-            reject(new Error(`Agent S3 exited with code ${code}`));
+            console.error(`Jarvis agent exited with code ${code}`);
+            reject(new Error(`Jarvis agent exited with code ${code}`));
           }
         });
 
         agentProcess.on('error', (err: Error) => {
           agentProcess = null;
           win?.webContents.send('agent-stopped');
-          console.error('Failed to start Agent S3:', err);
+          console.error('Failed to start Jarvis agent:', err);
           reject(err);
         });
       });
@@ -225,7 +223,7 @@ ipcMain.handle('start-recording', async () => {
 // Stop the running agent process
 ipcMain.handle('stop-agent', async () => {
   if (agentProcess) {
-    console.log('Stopping Agent S3...');
+    console.log('Stopping Jarvis agent...');
     agentProcess.kill();
     return { success: true };
   }

@@ -9,7 +9,7 @@ After a successful recording and transcription, the app now plays an affirmative
 2. **Transcription succeeds** → Random affirmative phrase is selected
 3. **TTS generates audio** → Fish Audio converts phrase to speech
 4. **Audio plays** → Confirmation is played using macOS `afplay`
-5. **Agent S3 executes** → The transcribed command is processed
+5. **Jarvis agent executes** → The transcribed command is processed
 
 ## Affirmative Phrases
 
@@ -88,7 +88,7 @@ ttsConfirmation.addPhrases(["Custom phrase 1", "Custom phrase 2"]);
 
 ## Error Handling
 
-If TTS confirmation fails (e.g., network issues, API errors), the error is logged but **does not** interrupt the workflow. The Agent S3 execution will continue regardless.
+If TTS confirmation fails (e.g., network issues, API errors), the error is logged but **does not** interrupt the workflow. The Jarvis agent execution will continue regardless.
 
 ## Files Modified
 

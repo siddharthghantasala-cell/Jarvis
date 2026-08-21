@@ -12,7 +12,7 @@ class Computer:
     def exec(self, code):
         pass
 
-# Copied from agent_s3.py and modified to remove external dependencies
+# Copied from jarvis_agent.py and modified to remove external dependencies
 class Executor:
     def __init__(self, remote=False):
         self.remote = remote
