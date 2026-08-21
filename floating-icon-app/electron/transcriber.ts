@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module';
 import * as fs from 'fs';
+import { errorMessage } from './errors';
 
 const require = createRequire(import.meta.url);
 const { Leopard } = require('@picovoice/leopard-node');
@@ -32,8 +33,8 @@ export class PicovoiceTranscriber {
 
             const { transcript } = leopard.process(pcmData);
             return { text: transcript };
-        } catch (error: any) {
-            console.error('Error during transcription:', error.message);
+        } catch (error) {
+            console.error('Error during transcription:', errorMessage(error));
             return null;
         } finally {
             leopard.release();

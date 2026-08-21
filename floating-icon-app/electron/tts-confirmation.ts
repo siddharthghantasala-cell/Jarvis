@@ -4,6 +4,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import path from 'path';
 import { app } from 'electron';
+import { errorMessage } from './errors';
 
 const require = createRequire(import.meta.url);
 const { Orca } = require('@picovoice/orca-node');
@@ -56,8 +57,8 @@ export class TTSConfirmation {
 
             await unlink(audioPath);
             console.log(`✓ TTS played: "${text.substring(0, 50)}..."`);
-        } catch (error: any) {
-            console.error('Error playing TTS:', error.message);
+        } catch (error) {
+            console.error('Error playing TTS:', errorMessage(error));
         } finally {
             orca.release();
         }

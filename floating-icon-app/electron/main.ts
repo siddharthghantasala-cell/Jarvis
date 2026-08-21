@@ -7,6 +7,7 @@ import { config } from 'dotenv'
 import { AudioRecorder } from './recorder'
 import { PicovoiceTranscriber } from './transcriber'
 import { TTSConfirmation } from './tts-confirmation'
+import { errorMessage } from './errors'
 
 // Load environment variables (app .env first, then root .env for ANTHROPIC_API_KEY etc.)
 config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '.env') })
@@ -162,8 +163,8 @@ ipcMain.handle('start-recording', async () => {
             if (line.startsWith('NARRATION:') && ttsConfirmation) {
               const narration = line.slice('NARRATION:'.length).trim();
               if (narration) {
-                ttsConfirmation.speakText(narration).catch(err =>
-                  console.error('Narration TTS error:', err.message)
+                ttsConfirmation.speakText(narration).catch((err: unknown) =>
+                  console.error('Narration TTS error:', errorMessage(err))
                 );
               }
             }
@@ -177,8 +178,8 @@ ipcMain.handle('start-recording', async () => {
             if (lineBuffer.startsWith('NARRATION:') && ttsConfirmation) {
               const narration = lineBuffer.slice('NARRATION:'.length).trim();
               if (narration) {
-                await ttsConfirmation.speakText(narration).catch(err =>
-                  console.error('Narration TTS error:', err.message)
+                await ttsConfirmation.speakText(narration).catch((err: unknown) =>
+                  console.error('Narration TTS error:', errorMessage(err))
                 );
               }
             }
@@ -191,8 +192,8 @@ ipcMain.handle('start-recording', async () => {
             if (code === 0 && ttsConfirmation) {
               try {
                 await ttsConfirmation.speakText('All done!');
-              } catch (err: any) {
-                console.error('Completion TTS error:', err.message);
+              } catch (err) {
+                console.error('Completion TTS error:', errorMessage(err));
               }
             }
             resolve();
@@ -214,9 +215,9 @@ ipcMain.handle('start-recording', async () => {
     } else {
       return { success: false, error: 'No transcription result' };
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error('Recording/Transcription/Agent error:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: errorMessage(error) };
   }
 })
 
