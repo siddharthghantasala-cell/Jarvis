@@ -9,7 +9,25 @@
       "WebSearch",
       "Bash(grep:*)",
       "Bash(cd:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(git mv *)",
+      "Bash(git rm *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"---tsc exit: $?\")",
+      "Bash(.venv/Scripts/python.exe -m py_compile floating-icon-app/jarvis-agent/jarvis_agent.py floating-icon-app/jarvis-agent/verify_fix.py floating-icon-app/jarvis-agent/verify_fix_standalone.py actions/demo.py what.py)",
+      "Bash(npx vite *)",
+      "Bash(npx eslint *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)",
+      "Bash(git merge *)",
+      "Bash(git push *)",
+      "Bash(git branch *)",
+      "Bash(npm run *)",
+      "Bash(echo \"=== npm run lint exit: $? ===\")",
+      "Bash(echo \"=== lint exit: $? ===\")"
     ]
   }
 }
