@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePorcupine } from '@picovoice/porcupine-react'
 import SiriAnimation from './components/SiriAnimation'
 import './App.css'
@@ -7,7 +7,13 @@ import './App.css'
 
 function App() {
   const [isListening, setIsListening] = useState(false)
-  const [isAgentRunning, setIsAgentRunning] = useState(false)
+
+  // Agent state lives in a ref, not state: it is only read inside effects, never
+  // rendered. As state it would force a no-op re-render on every agent transition,
+  // and the wake-word effect below would have to take it as a dependency — which
+  // would re-fire the wake-word action the moment the agent started, immediately
+  // stopping the agent it had just launched.
+  const isAgentRunningRef = useRef(false)
 
   const {
     keywordDetection,
@@ -34,17 +40,20 @@ function App() {
       porcupineKeyword,
       porcupineModel
     )
-  }, [])
+  }, [init])
 
-  // Start listening once loaded
+  // Start listening once loaded.
+  // `error` is deliberately not read here — it is logged by its own effect below.
+  // Depending on it would re-run this effect (and call start() again) every time
+  // an error changes while already loaded.
   useEffect(() => {
     if (isLoaded) {
       console.log('Porcupine loaded successfully, starting listening...')
       start()
     } else {
-      console.log('Porcupine not yet loaded. Error:', error)
+      console.log('Porcupine not yet loaded.')
     }
-  }, [isLoaded])
+  }, [isLoaded, start])
 
   // Stop glow when recording ends (user finished speaking)
   useEffect(() => {
@@ -62,11 +71,11 @@ function App() {
   useEffect(() => {
     const onStarted = () => {
       console.log('Jarvis agent started')
-      setIsAgentRunning(true)
+      isAgentRunningRef.current = true
     }
     const onStopped = () => {
       console.log('Jarvis agent stopped')
-      setIsAgentRunning(false)
+      isAgentRunningRef.current = false
     }
     window.ipcRenderer.on('agent-started', onStarted)
     window.ipcRenderer.on('agent-stopped', onStopped)
@@ -80,7 +89,7 @@ function App() {
   useEffect(() => {
     if (keywordDetection !== null) {
       console.log('Porcupine detected:', keywordDetection.label)
-      if (isAgentRunning) {
+      if (isAgentRunningRef.current) {
         handleStopAgent()
       } else {
         handleWakeWordDetected()
@@ -118,7 +127,7 @@ function App() {
     return () => {
       release()
     }
-  }, [])
+  }, [release])
 
   // Handle errors
   useEffect(() => {

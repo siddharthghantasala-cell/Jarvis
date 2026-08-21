@@ -108,12 +108,26 @@ export const useRecorder = ({
         animationFrameRef.current = requestAnimationFrame(detectSilence);
     };
 
-    // Cleanup
+    // Cleanup on unmount.
+    //
+    // `stopRecording` is re-created every render and `isRecording` changes over the
+    // hook's life, so a mount-scoped effect reading either directly would capture the
+    // first render's values — `isRecording` would always be false and an in-flight
+    // recording would never be torn down, leaking the mic stream and AudioContext.
+    // Keep the latest teardown in a ref so the unmount effect stays mount-scoped.
+    const cleanupRef = useRef<() => void>(() => {});
+
     useEffect(() => {
-        return () => {
+        cleanupRef.current = () => {
             if (isRecording) {
                 stopRecording();
             }
+        };
+    });
+
+    useEffect(() => {
+        return () => {
+            cleanupRef.current();
         };
     }, []);
 
